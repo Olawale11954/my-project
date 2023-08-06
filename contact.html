@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="with=device-width, initial-scale=1.0">
+   <title>Green Olive Global Academy</title>
+   <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?
+family=Poppins:wght@100;200;300;400;600;700&display=swap"
+rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/307172a5f5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <section class="sub-header">
+      <nav>
+         <a href="index.html"><img src="images/school logo.png"></a>
+         <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+               <li><a href="index.html">HOME</a></li>
+               <li><a href="chatbot.html">CHATME</a></li>
+               <li><a href="search engine.html">SEARCH IMAGE</a></li>
+               <li><a href="weather.html">CHECK WEATHER</a></li>
+               <li><a href="contact.html">CONTACTS</a></li>
+            </ul>
+         </div>
+         <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>Contact Us</h1>
+   </section>
+
+<!----- contact us ------>
+
+<section class="location">
+
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8070407.105686945!2d4.
+   161942360789588!3d9.006292144045018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104
+   e0baf7da48d0d%3A0x99a8fe4168c50bc8!2sNigeria!5e0!3m2!1sen!2sng!4v1660387016750!5m2!1sen!2sng"
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="
+    no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="contact-us">
+
+   <div class="row">
+      <div class="contact-col2">
+         <div>
+            <i class="fa-solid fa-house-user"></i>
+            <span>
+               <h5>Kano state Nigeria</h5>
+               <p>World wide online Academy</p>
+            </span>
+         </div>
+         <div>
+            <i class="fa-solid fa-phone"></i>
+            <span>
+               <h5>+2347035360479</h5>
+               <p>Monday to Saturday</p>
+            </span>
+         </div>
+         <div>
+            <i class="fa-solid fa-envelope"></i>
+            <span>
+               <h5>akinlola3@gmail.com</h5>
+               <p>Email us your query</p>
+               </span>
+            </div>
+         </div>
+      </div>
+</section>
+
+<section>
+   <div class="contact-col">
+      <form action="form-handler.php" method="post">
+
+         <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" id="contact-name" onkeyup="validateName()">
+            <span id="name-error"></span>
+         </div>
+
+         <div class="input-group">
+            <label>Phone No</label>
+            <input type="tel" placeholder="123 456 7890" id="contact-phone" onkeyup="validatePhone()">
+            <span id="phone-error"></span>
+         </div>
+
+         <div class="input-group">
+            <label>Email Id</label>
+            <input type="email" placeholder="Enter Email" id="contact-email" onkeyup="validateEmail()">
+            <span id="email-error"></span>
+         </div>
+
+         <div class="input-group">
+            <label>Your Message</label>
+            <textarea rows="5" placeholder="Enter your Message" id="contact-message" onkeyup="validateMessage()"></textarea>
+            <span id="message-error"></span>
+         </div>
+
+         <button onclick="return validateForm()">Send Message</button>
+         <span id="submit-error"></span>
+      </form>
+   </div>
+</section>
+
+
+<!----- footer ------>
+
+<section class="footer">
+   <h4>About Us</h4>
+   <p>We are global academy all over the world. we offer various learning skill for children
+      and adult, contact us for more information.</p>
+      <div class="icons">
+         <a href="https://www.facebook.com/mathew.akinola.121">
+            <i class="fa-brands fa-facebook"></i>
+         </a>
+         <a href="https://www.instagram.com/olawale11954">
+            <i class="fa-brands fa-instagram"></i>
+         </a>
+         <a href="https://www.twitter.com/OlawaleAkinola112">
+            <i class="fa-brands fa-twitter"></i>
+         </a>
+         <a href="https://www.fa-linkedin-in.com/OlawaleAkinola">
+            <i class="fa-brands fa-linkedin-in"></i>
+         </a>
+         <a href="https://www.youtube.com/channel/UCC6ZICCHUKA1lBbV9vIPK8A">
+            <i class="fa-brands fa-youtube"></i>
+      </a>
+      </div>
+</section>
+
+
+
+
+
+
+<!-----JavaScript for Toggle Menu------->
+   <script>
+
+      var navLinks = document.getElementById("navLinks");
+      function showMenu(){
+         navLinks.style.right = "0";
+      }
+      function hideMenu(){
+         navLinks.style.right = "-200px";
+      }
+
+      var nameError = document.getElementById('name-error');
+      var phoneError = document.getElementById('phone-error');
+      var emailError = document.getElementById('email-error');
+      var messageError = document.getElementById('message-error');
+      var submitError = document.getElementById('submit-error');
+
+      function validateName(){
+        var name = document.getElementById('contact-name').value;
+        
+        if(name.length == 0){
+         nameError.innerHTML = 'Name is required';
+         return false;
+        }
+        if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+         nameError.innerHTML = 'Write full name';
+         return false;
+        }
+        nameError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        return true;
+      }
+
+      function validatePhone(){
+         var phone = document.getElementById(contact-phone).value;
+
+         if(phone.length == 0){
+            phoneError.innerHTML = 'Phone no is required';
+            return false;
+         }
+         if(phone.length !== 10){
+            phoneError.innerHTML = 'Phone no should be 10 digits';
+            return false;
+         }
+         if(!phone.match(/^[0-9]{10}$/)){
+            phoneError.innerHTML = 'only digits please.';
+         return false;
+         }
+         phoneError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+         return true;
+      }
+      function validateEmail(){
+        var email = document.getElementById('contact-email').value;
+        
+        if(email.length == 0){
+         emailError.innerHTML = 'Email is required'
+         return false;
+        }
+        if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+         emailError.innerHTML = 'Email Invalid'
+         return false;
+        }
+        emailError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        return true;
+      }
+
+      function validateMessage(){
+        var message = document.getElementById('contact-message').value;
+        var required = 50;
+        var left = required - message.length;
+
+        if(left > 0){
+         messageError.innerHTML = left + 'more characters required';
+         return false;
+        }
+        messageError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        return true;
+      }      
+
+      function validateForm(){
+         if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage()){
+            submitError.style.display = 'block';
+            submitError.innerHTML = 'please fix error to send message';
+            setTimeout(function(){submitError.style.display = 'none';}, 3000);
+            return false;
+         }
+      }
+
+   </script>
+</body>
+</html>

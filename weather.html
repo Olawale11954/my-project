@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+	   <script src="https://kit.fontawesome.com/3a1a6056f3.js" crossorigin="anonymous"></script>
+	   <link rel="stylesheet" href="style.css">
+	   
+</head>
+
+<style>
+	body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #002339;
+    color: #fff;
+    }
+    .header{
+min-height: 100vh;
+width: 100%;
+background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/greenolivebanner.jpg);
+background-position: center;
+background-size: cover;
+position: relative;
+}
+nav{
+display:flex;
+padding:2%, 6%;
+justify-content: space-between;
+align-items: center;
+}
+nav img{
+width: 200px;
+}
+.nav-links{
+flex: 1;
+text-align: right;
+}
+.nav-links ul li{
+list-style: none;
+display: inline-block;
+padding: 8px 12px;
+position: relative;
+
+}
+.nav-links ul li a{
+color: #ffff;
+text-decoration: none;
+font-size: 13px;
+}
+.nav-links ul li::after{
+content: '';
+width: 0%;
+height: 2px;
+background: #f44336;
+display: block;
+margin: auto;
+transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+width: 100%;
+}
+    
+    .card{
+       width: 70%;
+       max-width: 450px;
+       background: linear-gradient(135deg, #00feba, #5b548a);
+       color: #fff;
+       margin: 100px auto 0;
+       border-radius: 20px;
+       padding: 40px 35px;
+       text-align: center;
+    }
+    .search{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .search input{
+        border: 0;
+        outline: 0;
+        background: #ebfffc;
+        color: #555;
+        padding: 10px 20px;
+        height: 20px;
+        border-radius: 30px;
+        flex: 1;
+        margin-right: 35px;
+        font-size: 14px;
+    }
+    .search span{
+        border: 0;
+        outline: 0;
+        background: #ebfffc;
+        width: 30px;
+        color: #333;
+        font-size: 30px;
+        border-radius: 50%;
+        height: 30px;
+        cursor: pointer;
+        margin-right: 15px;
+    }
+    
+    .weather-icon{
+        width: 170px;
+        margin-top: 30px;
+    }
+    .weather h1{
+       font-size: 70px;
+       font-weight: 500; 
+    }
+    .weather h2{
+       font-size: 30px;
+       font-weight: 400; 
+       margin-top: -10px;
+    }
+    .details{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 50px;
+    }
+    .col{
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+    .col img{
+        width: 60px;
+        margin-right: 10px;
+        color: #fff;
+    }
+    .text p{
+        font-size: 14px;
+        margin-top: 6px;
+    }
+.error{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+.weather{
+    display: none;
+}
+@media(max-width: 490px){
+    card{
+        width: 350px;
+    }
+    .nav-links ul li{
+    display: block;
+}
+.nav-links{
+    position: fixed;
+    background: #f44336;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px;
+    text-align: left;
+    z-index: 2;
+    transition: 1s;
+}
+nav .fa{
+    display: block;
+    color: #fff;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.nav-links ul{
+    padding: 30px;
+}
+}
+
+
+</style>
+
+<body>
+	<section class="header">
+		<nav>
+		   <a href="index.html"><img src="images/school logo.png"></a>
+		   <div class="nav-links" id="navLinks">
+			  <i class="fa fa-times" onclick="hideMenu()"></i>
+			  <ul>
+				 <li><a href="index.html">HOME</a></li>
+				 <li><a href="chatbot.html">CHATME</a></li>
+				 <li><a href="search engine.html">SEARCH IMAGE</a></li>
+				 <li><a href="weather.html">CHECK WEATHER</a></li>
+				 <li><a href="contact.html">CONTACTS</a></li>
+			  </ul>
+		   </div>
+		   <ul>
+		   </ul>
+		   <i class="fa fa-bars" onclick="showMenu()"></i>
+		</nav>
+    	<div class="card">
+	<div class="search">
+	<input type="text" placeholder="Enter City Name" spellcheck="false">
+	<span class="material-symbols-outlined">search</span>
+	</div>
+	<div class="error">
+	<p>Invalid City Name</p>
+	
+	</div>
+	<div class="weather">
+        <img src="images/Raining.png" class="weather-icon">
+	<h1 class="temp">22°C</h1>
+	<h2 class="city">Kano</h2>
+
+	<div class="details">
+		<div class="col">
+			<img src="images/mist.png">
+			<div>
+				<p class="humidity">50%</p>
+				<p>Humidity</p>
+			</div>
+		</div>
+		<div class="col">
+			<img src="images/Humidity.png">
+		<div>
+			<p class="wind">km/h</p>
+			<p>Wind Speed</p>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	<script>
+
+		
+var navLinks = document.getElementById("navLinks");
+      function showMenu(){
+         navLinks.style.right = "0";
+      }
+      function hideMenu(){
+         navLinks.style.right = "-200px";
+      }
+
+
+const apiKey = "ca80305483e8c6a41dc0dffe75a8aca7";
+	const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+	
+	const searchBox = document.querySelector(".search input");
+	const searchBtn = document.querySelector(".search span");
+	
+const weatherIcon = document.querySelector(".weather-icon");
+	
+	async function checkWeather(city){
+		const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+		var data = await response.json();
+
+		document.querySelector(".city").innerHTML = data.name;
+		document.querySelector(".temp").innerHTML =Math. round(data.main.temp) +"°c";
+				document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+					document.querySelector(".wind").innerHTML = data.wind.speed +" km/h";
+					
+			if(data.weather[0].main == "Clouds"){
+					 weatherIcon.src = "images/cloud.png";
+			}
+			else if(data.weather[0].main == "Clear"){
+				 weatherIcon.src = "images/clear.png"; 
+				  }
+				  else if(data.weather[0].main == "Rain"){
+				 weatherIcon.src = "images/Raining.png"; 
+				  }
+				  else if(data.weather[0].main == "Mist"){
+				 weatherIcon.src = "images/mist.png"; 
+				  }
+				  else if(data.weather[0].main == "Sunny"){
+				 weatherIcon.src = "images/sunny.png"; 				  }
+				  else if(data.weather[0].main == "thunderstorms"){
+                weatherIcon.src = "images/rhunder.png";
+				  }
+					    
+  document.querySelector(".weather").style.display = "block";
+					    
+
+	}
+	
+	searchBtn.addEventListener("click",()=>{
+	    checkWeather(searchBox.value);
+	})
+	
+
+	</script>
+</body>
+</html>
